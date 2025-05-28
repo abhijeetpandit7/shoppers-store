@@ -1,33 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer utilities {
-  .wrapper {
-    @apply w-full max-w-7xl lg:mx-auto p-5 lg:p-5 md:p-10;
-  }
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
 
-  .flex-start {
-    @apply flex justify-start items-center;
-  }
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-  .flex-center {
-    @apply flex justify-center items-center;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
+}
 
-  .flex-between {
-    @apply flex justify-between items-center;
-  }
+@utility wrapper {
+  @apply w-full max-w-7xl lg:mx-auto p-5 lg:p-5 md:p-10;
+}
 
-  .h1-bold {
-    @apply font-bold text-3xl lg:text-4xl;
-  }
+@utility flex-start {
+  @apply flex justify-start items-center;
+}
 
-  .h2-bold {
-    @apply font-bold text-2xl lg:text-3xl;
-  }
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
 
-  .h3-bold {
-    @apply font-bold text-xl lg:text-2xl;
-  }
+@utility flex-between {
+  @apply flex justify-between items-center;
+}
+
+@utility h1-bold {
+  @apply font-bold text-3xl lg:text-4xl;
+}
+
+@utility h2-bold {
+  @apply font-bold text-2xl lg:text-3xl;
+}
+
+@utility h3-bold {
+  @apply font-bold text-xl lg:text-2xl;
 }
